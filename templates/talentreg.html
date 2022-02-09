@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <title>Connect Suite</title>
+</head>
+<body>
+        <div id="wrap">
+            {% if messages %}
+            <div id='errors'>
+                {% for message in messages %}
+                    <p>- {{message}} -</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <h2>Influencer Sign-up!</h2>
+        <h1>Register:</h1>
+        <form action="/talent/register" method=POST>
+            {% csrf_token %}
+    <div class='form-box'>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" id="first_name">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" id="last_name">
+            <label for="city">City:</label>
+            <input type="text" name="city" id="city">
+            <label for="state">State:</label>
+            <input type="text" name="state" id="state">
+            <label for="instagram_handle">Instagram Handle:</label>
+            <input type="text" name="instagram_handle" id="instagram_handle">
+            <label for="niche">Niche:</label>
+            <input type="text" name="niche" id="niche">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <label for="confirm">Confirm PW</label>
+            <input type="password" name="confirm" id="confirm">
+            <button class="btn btn-primary">Register</button>
+            </div>
+        </form>
+        </div>
