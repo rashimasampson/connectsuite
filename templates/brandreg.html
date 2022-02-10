@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <title>Connect Suite</title>
+</head>
+<body>
+        <div id="wrap">
+            {% if messages %}
+            <div id='errors'>
+                {% for message in messages %}
+                    <p>- {{message}} -</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <a href="">Influencer login</a>
+        <a href="">Brand login</a>
+        <h2>Brand Sign-up!</h2>
+        <h1>Register:</h1>
+        <form action="/brands/dashboard" method=POST>
+            {% csrf_token %}
+    <div class='form-box'>
+            <label for="company_name">Company Name:</label>
+            <input type="text" name="company_name" id="company_name">
+            <label for="category">Category:</label>
+            <input type="text" name="category" id="category">
+            <label for="company_city">Company City:</label>
+            <input type="text" name="company_city" id="company_city">
+            <label for="company_state">Company State:</label>
+            <input type="text" name="company_state" id="company_state">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <label for="confirm">Confirm PW</label>
+            <input type="password" name="confirm" id="confirm">
+            <button class="btn btn-primary">Register</button>
+            </div>
+        </form>
+        <a href="/talent/register">Need to register as an influencer?</a>
+        </div>
