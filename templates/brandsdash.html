@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link rel="stylesheet" href="{% static 'Connect.png' %}"> 
+
+
+    <title>Connect Suite Brands Dashboard</title>
+</head>
+<body>
+    <div id="header">
+        <img src="{% static 'Connect.png' %}"/>
+        <p>Brands Dashboard</p>
+        </div>
+    <div class="top-nav">
+    <h2>Welcome {{ request.session.greeting}}!</h2>
+    <a href="/brands/login">Logout</a>
+    <a href="/brands/create">Add a collaboration</a>
+    </div> 
+        <div id="wrap">
+        <h2>Available influencers:</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Instagram Handle</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Niche</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for talent in talent_list %}
+                <tr>
+                    <td><a href="/view/talent/{{ talent.id }}">{{ talent.first_name }} {{ talent.last_name }}</a></td>
+                    <td>{{ talent.instagram_handle }} </td>
+                    <td>{{ talent.city }} </td>
+                    <td>{{ talent.state }} </td>
+                    <td>{{ talent.niche }} </td>
+                    <td><a href="/brands/favorite/{{ talent.id }}">Favorite</a></td>
+                </tr>
+                {% endfor %} 
+    </div> 
+    </body>
+    </html>
