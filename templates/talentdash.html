@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link rel="stylesheet" href="{% static 'Connect.png' %}"> 
+
+    <title>Connect Suite Talent Dashboard</title>
+</head>
+<body>
+    <div id="header">
+        <img src="{% static 'Connect.png' %}"/>
+        <p>Talent Dashboard</p>
+        </div>
+        <div class="top-nav">
+        <h2>Welcome {{ request.session.greeting }}!</h2>
+        <a href="/logout">Logout</a>
+        <a href="/submission">Add</a>
+        </div> 
+        <h2>Available brands:</h2>
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Category</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for brand in brand_list %}
+                <tr>
+                    <td><a href="/view/{{ talent.id }}">{{ brand.company_name }}</a></td>
+                    <td>{{ talent.category }} </td>
+                    <td>{{ talent.city }} </td>
+                    <td>{{ talent.state }} </td>
+                    <td><a href="/talent/{{ talent.id }}/favorite">Favorite</a></td>
+                </tr>
+                {% endfor %} 
+    </div> 
+</body>
+</html>
